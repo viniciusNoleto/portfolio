@@ -9,9 +9,17 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "devDependencies": {
+    "@types/color": "^4.2.0"
+  },
   "dependencies": {
+    "@nuxt/icon": "^1.10.3",
+    "@nuxt/image": "^1.9.0",
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@nuxtjs/color-mode": "^3.5.2",
     "nuxt": "^3.16.0",
     "vue": "^3.5.13",
+    "color": "^5.0.0",
     "vue-router": "^4.5.0"
   }
 }

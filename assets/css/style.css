@@ -1,0 +1,47 @@
+
+@layer app-base {
+
+  body {
+    @apply bg-zinc-100 text-default-light dark:bg-zinc-800 dark:text-default-dark;
+  }
+
+  :is(label, abbr).required {
+    @apply after:content-['*'] after:ml-1 after:text-red-500;
+  }
+
+  :is(label, abbr).optional {
+    @apply after:content-['(opcional)'] after:ml-1 after:text-2xs after:text-blue-400;
+  }
+
+}
+
+@layer app-abbreviation {
+
+  .responsive-flex {
+    @apply flex flex-wrap *:grow;
+  }
+
+  .center-flex {
+    @apply flex items-center justify-center;
+  }
+
+  .form-gap {
+    @apply gap-x-4 gap-y-6;
+  }
+
+  .form-grid {
+    @apply grid grid-cols-12 form-gap;
+  }
+
+  .merge-childs {
+    display: grid;
+    grid-template-areas: "main";
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .merge-childs > * {
+    grid-area: main;
+  }
+
+}
