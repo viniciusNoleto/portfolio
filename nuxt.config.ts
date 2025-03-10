@@ -8,6 +8,15 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
 
+  icon: {
+    customCollections: [
+      {
+        prefix: 'noleto',
+        dir: './assets/icons'
+      },
+    ],
+  },
+
   css: [
     '~/assets/css/style.css',
     '~/assets/css/old.css',

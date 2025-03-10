@@ -6,13 +6,13 @@
           <div class="home__social">
             <a href="https://www.instagram.com/invites/contact/?i=1nzdie95dni4q&utm_content=p6o72vi" target="_blank"
               class="home__social-icon">
-              <i class="uil uil-instagram"></i>
+              <Icon name="uil-instagram" />
             </a>
             <a href="https://github.com/MRINMOY662" target="_blank" class="home__social-icon">
-              <i class="uil uil-github-alt"></i>
+              <Icon name="uil-github-alt" />
             </a>
             <a href="https://twitter.com/mrinmoy91013697" target="_blank" class="home__social-icon">
-              <i class="uil uil-twitter-alt"></i>
+              <Icon name="uil-twitter-alt" />
             </a>
           </div>
 

@@ -2,7 +2,7 @@
 import Color from 'color';
 
 
-export const PRIMARY_COLOR = '#6366f1';
+export const PRIMARY_COLOR = '#6057e0';
 
 export const PRIMARY_COLOR_PALETTE = colorVariations(PRIMARY_COLOR);
 

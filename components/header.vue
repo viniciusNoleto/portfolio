@@ -1,11 +1,12 @@
 <template>
   <header class="center-flex p-6 shadow">
-    <nav class="w-[75%] flex justify-between">
+    <nav class="max-w-[60rem] w-full flex justify-between gap-12">
       <NuxtLink
-        class="italic font-extrabold"
+        class="italic font-extrabold flex items-center text-primary-600"
         to="#"
       >
-        &lt;Nolêto /&gt;
+        &lt;
+        /&gt;
       </NuxtLink>
 
       <div class="flex gap-12">
@@ -34,7 +35,7 @@
           ]"
           :key="link.name"
           :to="link.to"
-          class="leading-none font-semibold center-flex gap-1"
+          class="leading-none font-semibold center-flex gap-1 transition-all underline decoration-transparent hover:decoration-primary-500"
         >
           <Icon :name="link.icon" />
           {{ link.name }}
