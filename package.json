@@ -15,11 +15,17 @@
   "dependencies": {
     "@nuxt/icon": "^1.10.3",
     "@nuxt/image": "^1.9.0",
-    "@nuxtjs/tailwindcss": "^6.12.2",
     "@nuxtjs/color-mode": "^3.5.2",
-    "nuxt": "^3.16.0",
-    "vue": "^3.5.13",
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@primevue/nuxt-module": "^4.2.5",
+    "@primevue/themes": "^4.2.5",
+    "@vueuse/nuxt": "^13.0.0",
     "color": "^5.0.0",
-    "vue-router": "^4.5.0"
+    "nuxt": "^3.10.2",
+    "primevue": "^4.2.5",
+    "typed.js": "^2.1.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "yup": "^1.6.1"
   }
 }

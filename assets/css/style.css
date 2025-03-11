@@ -1,6 +1,10 @@
 
 @layer app-base {
 
+  html, :target {
+    @apply scroll-pt-20 scroll-smooth;
+  }
+
   body {
     @apply bg-zinc-100 text-default-light dark:bg-zinc-800 dark:text-default-dark;
   }

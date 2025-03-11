@@ -1,8 +1,16 @@
+import { NoletoTheme } from "./themes/noleto";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
 
   devtools: { enabled: true },
+
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth'
+    }
+  },
 
   colorMode: {
     classSuffix: '',
@@ -23,9 +31,30 @@ export default defineNuxtConfig({
   ],
 
   modules: [
+    '@primevue/nuxt-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    '@vueuse/nuxt',
     '@nuxt/image',
     '@nuxt/icon',
   ],
+
+  primevue: {
+    options: {
+      theme: {
+        preset: NoletoTheme,
+        options: {
+          darkModeSelector: '.dark',
+          cssLayer: {
+            name: 'primevue',
+            order: 'tailwind-base, toast, primevue, primevue-styled, app-base, tailwind-utilities'
+          },
+        }
+      },
+    },
+    autoImport: false,
+    components: { exclude: '*' },
+    directives: { include: [] },
+  },
+
 })
