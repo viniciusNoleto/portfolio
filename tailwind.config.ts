@@ -1,7 +1,7 @@
 
 import {
   PRIMARY_COLOR_PALETTE,
-} from './shared/constants/colors';
+} from './common/constants/colors';
 
 
 /** @type {import('tailwindcss').Config} */

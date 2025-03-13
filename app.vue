@@ -33,7 +33,7 @@
 
 <script setup>
 
-  import { PRIMARY_COLOR } from './shared/constants/colors';
+  import { PRIMARY_COLOR } from './common/constants/colors';
 
   const APP_TITLE = "Vinícius Nolêto's portfolio";
 

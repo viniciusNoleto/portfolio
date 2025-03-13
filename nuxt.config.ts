@@ -45,10 +45,6 @@ export default defineNuxtConfig({
         preset: NoletoTheme,
         options: {
           darkModeSelector: '.dark',
-          cssLayer: {
-            name: 'primevue',
-            order: 'tailwind-base, toast, primevue, primevue-styled, app-base, tailwind-utilities'
-          },
         }
       },
     },
