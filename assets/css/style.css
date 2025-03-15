@@ -2,7 +2,7 @@
 @layer app-base {
 
   html, :target {
-    @apply scroll-pt-20 scroll-smooth;
+    @apply scroll-pt-28 scroll-smooth;
   }
 
   body {

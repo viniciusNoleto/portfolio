@@ -3,7 +3,7 @@
     <header class="fixed center-flex backdrop-blur-md h-20 w-full shadow-md z-20">
       <nav class="max-w-[60rem] w-full flex justify-between gap-12 mx-6">
         <NuxtLink
-          class="font-bold text-sm flex items-center text-primary-600"
+          class="font-bold text-sm flex items-center text-primary-600 p-1 px-2 relative before:absolute dark:before:bg-white before:inset-0 before:z-[-1] before:skew-x-12"
           to="#"
         >
           <NuxtImg
@@ -33,7 +33,7 @@
               {
                 name: 'Qualificações',
                 icon: 'mdi:clipboard-edit-outline',
-                to: '#about'
+                to: '#qualifications'
               },
               {
                 name: 'Contato',

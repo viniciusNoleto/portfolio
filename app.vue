@@ -17,7 +17,7 @@
         <div class="h-px w-[80%] bg-gradient-to-r from-transparent via-gray-500/35 to-transparent"/>
       </div>
 
-      <LayoutQualifications />
+      <LayoutQualifications id="qualifications" />
     </section>
 
     <StyleStainWrapper class="top-0 right-0">
@@ -31,7 +31,7 @@
     <!-- <Main /> -->
 
     <div
-      class="h-[300vh]"
+      class="h-[50vh]"
     />
 
   </section>
@@ -41,14 +41,16 @@
 
   import { PRIMARY_COLOR } from './common/constants/colors';
 
-  const APP_TITLE = "Vinícius Nolêto's portfolio";
+  const img = useImage()
 
-  useHead({
-    titleTemplate: (title) => title ? `${title} | ${APP_TITLE}` : APP_TITLE,
+  const profilePic = computed(() => {
+    return img('/images/me.jpg');
   });
 
   useSeoMeta({
+    title: "Vinícius Nolêto's portfolio",
     description: "Vinícius Nolêto de Araújo - Front-end Developer",
+    ogImage: profilePic
   });
 
 </script>

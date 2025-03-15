@@ -15,27 +15,91 @@
         </div>
       </div>
 
+      <div class="center-flex">
+        <div class="w-fit grid auto-cols-fr grid-flow-col gap-2">
+          <NoletoButton
+            v-for="button in [
+              {
+                label: 'Trabalhos',
+                value: 'works',
+                icon: 'uil-briefcase'
+              },
+              {
+                label: 'Certificados',
+                value: 'certificates',
+                icon: 'uil-award'
+              },
+              {
+                label: 'Projetos',
+                value: 'projects',
+                icon: 'majesticons:sitemap-line'
+              }
+            ]"
+            class="bg-primary-500 rounded-md center-flex gap-1.5 p-2 px-3 text-white font-bold transition-all duration-500 hover:text-primary-500 hover:bg-primary-500/10"
+            @action="selected = (button.value as any)"
+          >
+            <Icon
+              :name="button.icon"
+              class="text-2xl"
+            />
+  
+            {{ button.label }}
+          </NoletoButton>
+        </div>
+      </div>
+
       <section class="flex flex-col gap-6">
-        <PrimeVueTimeline
-          :value="workHistory"
-          align="alternate"
-        >
-          <template #content="{ item }">
-            <div class="flex flex-col gap-2">
-              <span class="text-lg font-bold">
-                {{ item.title }}
-              </span>
-  
-              <span class="text-sm font-thin">
-                {{ item.company }}
-              </span>
-  
-              <p class="text-sm">
-                {{ item.description }}
-              </p>
-            </div>
-          </template>
-        </PrimeVueTimeline>
+        <transition name="fade-side">
+          <PrimeVueTimeline
+            :value="info"
+            align="alternate"
+          >
+            <template #content="{ item, index }">
+              <div class="flex flex-col gap-2 pb-4">
+                <span
+                  v-text="item.title"
+                  class="text-lg font-bold"
+                />
+    
+                <span
+                  v-if="item.company"
+                  v-text="item.company"
+                  class="text-xs font-medium"
+                />
+    
+                <p
+                  v-if="item.description"
+                  v-html="item.description"
+                  class="text-sm"
+                />
+
+                <a
+                  v-if="item.link"
+                  :href="item.link"
+                  target="_blank"
+                  class="flex items-center gap-0.5 text-sm font-semibold text-primary-500"
+                  :class="index % 2 === 0 ? 'justify-start' : 'justify-end'"
+                >
+                  <Icon name="uil-link" class="text-md" />
+                  ver mais
+                </a>
+
+                <div
+                  v-if="item.date"
+                  class="flex items-center gap-1 text-xs font-semibold"
+                  :class="index % 2 === 0 ? 'justify-start' : 'justify-end'"
+                >
+                  <Icon
+                    name="material-symbols:calendar-month-rounded"
+                    class="text-md"
+                  />
+
+                  {{ item.date }}
+                </div>
+              </div>
+            </template>
+          </PrimeVueTimeline>
+        </transition>
       </section>
     </section>
   </section>
@@ -44,42 +108,26 @@
 <script lang="ts" setup>
 
   import PrimeVueTimeline from 'primevue/timeline';
+  import workJson from '~/app/info/data/works.json';
+  import certificatesJson from '~/app/info/data/certificates.json';
+  import projectsJson from '~/app/info/data/projects.json';
 
-  const workHistory = ref([
-    {
-      title: 'Desenvolvedor Front-end Pleno',
-      company: 'A&3 Tecnologia',
-      description: `Atualmente, como Pleno na A&3, sou responsável pela equipe de Front-end, onde além de liderar o desenvolvimento, também treino estagiários e gerencio suas tarefas. Meu foco tem sido me especializar cada vez mais nos conceitos de arquitetura de sistema, o que tem permitido tornar o desenvolvimento de telas mais ágil e seguro. Durante esse período, passei a entender profundamente o valor da documentação, reconhecendo sua importância na manutenção de um código coeso e bem estruturado.`
-    },
-    {
-      title: 'Desenvolvedor Front-end Júnior',
-      company: 'A&3 Tecnologia',
-      description: `Durante meu período como Junior na A&3, fui desafiado a iniciar um projeto do zero, o que exigiu de mim um mergulho profundo no estudo de Nuxt e design patterns. Com a responsabilidade de entregar um produto de alta qualidade, busquei aplicar os melhores padrões de desenvolvimento, sempre focado na excelência técnica. Nesse contexto, me aprofundei no uso de Typescript, com ênfase nas generics, explorando como essas ferramentas podem ser utilizadas para criar uma base de código sólida, tipada e altamente reutilizável.
 
-Ao longo desse processo, desenvolvi uma verdadeira paixão pelo Tailwind. Sua abordagem utility-first transformou a criação de componentes em uma tarefa não apenas mais intuitiva, mas também extremamente eficiente e agradável. Essa combinação de tecnologias e práticas me permitiu construir um sistema coeso, onde a legibilidade e a manutenção do código foram prioridades desde o início.
+  const worksHistory = ref(workJson);
 
-Além de todo o desenvolvimento técnico, tive a oportunidade de realizar sozinho o deploy da aplicação que desenvolvi. Utilizando dockerização, consegui garantir que os ambientes local, de homologação e de produção fossem rigorosamente idênticos, eliminando a possibilidade de erros causados por diferenças de configuração entre eles.`
-    },
-    {
-      title: 'Estagiário Full-Stack',
-      company: 'A&3 Tecnologia',
-      description: `Durante meu estágio na empresa A&3, fui inicialmente contratado como programador backend. No entanto, ao perceberem meu conhecimento em front-end, área que na época carecia de profissionais dedicados na empresa, comecei a refatorar o código existente. Essa experiência não só aprimorou o front-end dos projetos em que trabalhei, mas também despertou em mim um profundo interesse por front-end, principalmente por Vue.js, expandindo minha atuação na empresa para além do backend.`
-    },
-    {
-      title: 'Desenvolvedor Full-Stack',
-      company: 'Iteraima - Instituto de Terras e Colonização de Roraima',	
-      description: `Durante meu período como desenvolvedor no Iteraima, autarquia responsável pela outorga de terras do governo de Roraima, fui responsável pelo desenvolvimento completo do sistema REGULARIZA. Inicialmente, a organização não dispunha de um banco de dados ou modelagem estruturada, o que me levou a utilizar Python para vasculhar e analisar uma grande quantidade de dados armazenados em diversos arquivos Excel. A partir dessa análise, pude popular o banco de dados e dar início ao projeto.
+  const certificatesHistory = ref(certificatesJson);
 
-Com a base de dados estabelecida e compreendendo as regras de negócio e modelos de documento, desenvolvi um sistema utilizando PHP e JavaScript (por falta de melhor infraestrutura que permitisse utilizar outras tecnologias) para gerenciar todo o processo de outorga de terras no estado de Roraima. Esse sistema incluía a impressão de documentos oficiais, também automatizada com Python.
+  const projectsHistory = ref(projectsJson);
 
-Após completar o escopo físico do sistema, que abrangia a emissão de documentos e relatórios, dediquei-me ao escopo financeiro da outorga. Nos meus últimos meses no Iteraima, desenvolvi um sistema de gerenciamento de pagamento para as vias das outorgas, integrando a API de pagamento via PIX e boleto do Banco do Brasil.`
-    },
-    {
-      title: 'Pesquisador de Mobilidade Urbana',
-      company: 'UFRR',
-      description: `Durante minha graduação, participei de um projeto de pesquisa sobre mobilidade urbana, onde criei o costume da leitura de artigos científicos e da escrita de relatórios técnicos. Nesse projeto, desenvolvi um protótipo para apresentação utilizando Javascript em uma egine para jogos pixel art, o que me desafiou por me forçar a aplicar modelos matemáticos em um contexto de programação.`	
-    },
-  ]);
+
+  const selected = useLocalStorage<'works'|'certificates'|'projects'>('selectedInfo', 'works');
+
+  const info = computed(() => {
+    if (selected.value === 'works') return worksHistory.value;
+    if (selected.value === 'certificates') return certificatesHistory.value;
+    if (selected.value === 'projects') return projectsHistory.value;
+    return [];
+  });
 
 </script>
 

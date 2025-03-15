@@ -16,7 +16,7 @@
       </div>
 
       <section class="flex flex-col gap-6">
-        <LayoutSkillsAccordion header="Validação de formulários">
+        <LayoutSkillsField header="Validação de formulários">
           <template #icons>
             <Icon name="skill-icons:vuejs-light" />
             <div class="rounded text-sm h-5 w-5 center-flex bg-[#f4f2ee] text-emerald-500">
@@ -51,11 +51,42 @@
               </NoletoInput>
             </section>
           </section>
-        </LayoutSkillsAccordion>
+        </LayoutSkillsField>
 
-        <LayoutSkillsAccordion
-          header="Comunicação com API"
-        >
+        <LayoutSkillsField header="Animações e UI interativa">
+          <template #icons>
+            <Icon name="skill-icons:nuxtjs-light" />
+            <Icon name="skill-icons:vuejs-light" />
+          </template>
+
+          <section class="flex flex-col px-3 pb-3 pt-2 gap-4">
+            <div>
+              Para tornar a experiência do usuário mais agradável, utilizo animações e interações visuais.
+              Isso pode ser visto no exemplo abaixo, onde as círculos mudam de posição a cada segundo.
+            </div>
+
+            
+            <section class="p-6 border border-primary-400 rounded-md">
+              <section>
+                <ul
+                  ref="parent"
+                  class="balls aspect-square my-4 mx-auto w-full max-w-60 relative overflow-hidden"
+                >
+                  <li
+                    v-for="color in balls"
+                    :key="color.label"
+                    class="w-14 h-14 rounded-full center-flex text-xs font-semibold text-white absolute"
+                    :class="color.class"
+                  >
+                    {{ color.label }}
+                  </li>
+                </ul>
+              </section>
+            </section>
+          </section>
+        </LayoutSkillsField>
+
+        <LayoutSkillsField header="Comunicação com API">
           <template #icons>
             <Icon name="skill-icons:nuxtjs-light" />
             <Icon name="skill-icons:typescript" />
@@ -96,18 +127,18 @@
 
               <div
                 v-else
-                class="bg-zinc-50 dark:bg-zinc-900 rounded-lg p-4 flex flex-col gap-2"
+                class="bg-zinc-50 dark:bg-zinc-900 rounded-lg p-4 flex flex-col gap-2 shadow"
               >
-                <div class="flex gap-4">
-                  <div class="max-w-[25%] center-flex">
+                <div class="flex flex-col md:flex-row gap-4">
+                  <div class="max-w-[25%] center-flex mx-auto">
                     <div class="overflow-hidden rounded-md center-flex">
                       <NuxtImg :src="product?.image" />
                     </div>
                   </div>
 
                   <div class="grow flex flex-col gap-2">
-                    <div class="flex justify-between gap-4">
-                      <div class="text-xl font-semibold">
+                    <div class="flex flex-wrap-reverse justify-between items-center gap-x-4 gap-y-1">
+                      <div class="text-lg font-semibold">
                         {{ product?.title }}, <u class="decoration-primary-500 decoration-2">{{ product?.price }}$</u>
                       </div>
 
@@ -120,7 +151,7 @@
                       {{ product?.description }}
                     </span>
 
-                    <div class="flex gap-1 text-xl">
+                    <div class="flex flex-wrap gap-1 items-center text-xl">
                       <UtilsItemSlot
                         v-slot="{ item }"
                         :item="{
@@ -128,20 +159,22 @@
                           disableds: 5 - Math.floor(product?.rating?.rate || 0)
                         }"
                       >
-                        <template v-if="item.actives">
-                          <Icon
-                            v-for="_ in item.actives"
-                            name="ic:round-star-rate"
-                          />
-                        </template>
-
-                        <template v-if="item.disableds">
-                          <Icon
-                            v-for="_ in item.disableds"
-                            name="ic:round-star-rate"
-                            class="opacity-50"
-                          />
-                        </template>
+                        <div class="flex gap-0.5">
+                          <template v-if="item.actives">
+                            <Icon
+                              v-for="_ in item.actives"
+                              name="ic:round-star-rate"
+                            />
+                          </template>
+  
+                          <template v-if="item.disableds">
+                            <Icon
+                              v-for="_ in item.disableds"
+                              name="ic:round-star-rate"
+                              class="opacity-50"
+                            />
+                          </template>
+                        </div>
                       </UtilsItemSlot>
 
                       <span class="text-xs font-semibold ml-1">
@@ -153,46 +186,9 @@
               </div>
             </section>
           </section>
-        </LayoutSkillsAccordion>
+        </LayoutSkillsField>
 
-        <LayoutSkillsAccordion
-          header="Animações e UI interativa"
-        >
-          <template #icons>
-            <Icon name="skill-icons:nuxtjs-light" />
-            <Icon name="skill-icons:vuejs-light" />
-          </template>
-
-          <section class="flex flex-col px-3 pb-3 pt-2 gap-4">
-            <div>
-              Para tornar a experiência do usuário mais agradável, utilizo animações e interações visuais.
-              Isso pode ser visto no exemplo abaixo, onde as círculos mudam de posição a cada segundo.
-            </div>
-
-            
-            <section class="p-6 border border-primary-400 rounded-md">
-              <section>
-                <ul
-                  ref="parent"
-                  class="balls aspect-square my-4 mx-auto w-full max-w-60 relative"
-                >
-                  <li
-                    v-for="color in balls"
-                    :key="color.label"
-                    class="w-14 h-14 rounded-full center-flex text-xs font-semibold text-white absolute"
-                    :class="color.class"
-                  >
-                    {{ color.label }}
-                  </li>
-                </ul>
-              </section>
-            </section>
-          </section>
-        </LayoutSkillsAccordion>
-
-        <LayoutSkillsAccordion
-          header="Gerenciamento de estado"
-        >
+        <LayoutSkillsField header="Gerenciamento de estado">
           <template #icons>
             <Icon name="skill-icons:nuxtjs-light" />
             <Icon name="skill-icons:vuejs-light" />
@@ -228,17 +224,17 @@
               </NoletoInput>
             </section>
           </section>
-        </LayoutSkillsAccordion>
+        </LayoutSkillsField>
 
-        <LayoutSkillsAccordion
-          header="Implantação de aplicações"
-        >
+        <!-- 
+        <LayoutSkillsField header="Implantação de aplicações">
           <template #icons>
             <Icon name="skill-icons:vercel-light" />
             <Icon name="skill-icons:docker" />
             <Icon name="skill-icons:nginx" />
           </template>
-        </LayoutSkillsAccordion>
+        </LayoutSkillsField>
+        -->
       </section>
     </section>
   </section>
@@ -361,7 +357,9 @@
     },
   ]);
 
-  const [parent] = useAutoAnimate({ duration: 500 })
+  const [parent] = useAutoAnimate({
+    duration: 500
+  })
 
   setInterval(() => {
     balls.value.push(balls.value.shift()!)
