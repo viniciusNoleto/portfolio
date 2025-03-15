@@ -3,7 +3,14 @@
     :disabled="disabled || loading"
     @click="handleClick"
   >
-    <slot />
+    <slot
+      v-if="!loading"
+    />
+
+    <Icon
+      v-if="loading"
+      name="svg-spinners:gooey-balls-2"
+    />
   </button>
 </template>
 

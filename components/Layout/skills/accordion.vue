@@ -1,5 +1,8 @@
 <template>
-  <UtilsAccordion class="backdrop-blur-md border border-gray-500/50 rounded-md overflow-hidden">
+  <UtilsAccordion
+    start-open
+    class="backdrop-blur-md border border-gray-500/50 rounded-md overflow-hidden"
+  >
     <template #header="{ open }">
       <div class="flex items-center gap-1 p-4 text-xl leading-none bg-gradient-to-br rounded-b hover:bg-gray-500/10 transition-colors duration-500">
         <Icon
@@ -22,7 +25,9 @@
       </div>
     </template>
 
-    <slot />
+    <template #default="{ open }">
+      <slot :open="open" />
+    </template>
   </UtilsAccordion>
 </template>
 

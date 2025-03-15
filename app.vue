@@ -12,6 +12,12 @@
       </div>
   
       <LayoutSkills id="skills" />
+
+      <div class="center-flex">
+        <div class="h-px w-[80%] bg-gradient-to-r from-transparent via-gray-500/35 to-transparent"/>
+      </div>
+
+      <LayoutQualifications />
     </section>
 
     <StyleStainWrapper class="top-0 right-0">

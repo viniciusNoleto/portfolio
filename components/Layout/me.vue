@@ -1,7 +1,7 @@
 <template>
   <section class="center-flex px-6">
-    <section class="max-w-[60rem] flex items-center py-14 gap-8">
-      <div class="flex flex-col gap-4">
+    <section class="max-w-[60rem] flex flex-col md:flex-row items-center py-14 gap-8">
+      <div class="flex md:flex-col gap-4">
         <NuxtLink
           v-for="link in [
             {
@@ -39,13 +39,12 @@
             Eu sou
             <span
               id="typer"
-              class="font-semibold"
+              class="font-semibold underline underline-offset-2"
             />
           </span>
         </div>
-        
   
-        <p class="home__description">
+        <p>
           Sou um desenvolvedor <i class="font-medium">web</i> com foco em <i class="font-medium">frontend</i> e experiência sólida em <i class="font-medium">backend</i>, utilizando <i class="font-medium underline decoration-2 decoration-emerald-400">Vue</i>, <i class="font-medium underline decoration-2 decoration-emerald-500">Nuxt</i> e <i class="font-medium underline decoration-2 decoration-blue-400">Tailwind</i> para criar interfaces eficientes e intuitivas. Minha abordagem de programação combina <u>programação funcional</u> e <u>orientação a objetos</u>, priorizando código bem estruturado e otimizado. Sempre em busca de conhecimento e novos desafios!
         </p>
   
@@ -58,7 +57,7 @@
         </NuxtLink>
       </div>
 
-      <div class="merge-childs">
+      <div class="-order-1 md:order-none merge-childs">
         <div
           class="blob scale-110 bg-primary-500/50"
           style="animation-delay: 800ms"

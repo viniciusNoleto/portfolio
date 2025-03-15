@@ -6,10 +6,12 @@
 
     <slot :invalid="invalid" />
 
-    <div v-if="errors.length > 0" class="text-red-500 text-sm">
-      <div v-for="error in errors" :key="error">
-        {{ error }}
-      </div>
+    <div class="text-red-500 text-sm">
+      <transition-group name="move-fade-in">
+        <div v-for="error in errors" :key="error">
+          {{ error }}
+        </div>
+      </transition-group>
     </div>
   </div>
 </template>
@@ -32,5 +34,14 @@
 </script>
 
 <style scoped>
+
+  .move-fade-in-enter-active, .move-fade-in-leave-active {
+    transition: all 0.2s;
+  }
+
+  .move-fade-in-enter-from, .move-fade-in-leave-to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 
 </style>

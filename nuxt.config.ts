@@ -31,10 +31,12 @@ export default defineNuxtConfig({
   ],
 
   modules: [
+    '@formkit/auto-animate/nuxt',
     '@primevue/nuxt-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
+    '@pinia/nuxt',
     '@nuxt/image',
     '@nuxt/icon',
   ],
@@ -46,11 +48,13 @@ export default defineNuxtConfig({
         options: {
           darkModeSelector: '.dark',
         }
-      },
+      }
     },
     autoImport: false,
     components: { exclude: '*' },
-    directives: { include: [] },
+    directives: {
+      prefix: 'pv-', /* v-pv-directive */
+      include: ['tooltip']
+    },
   },
-
-})
+});

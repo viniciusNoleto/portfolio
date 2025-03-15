@@ -1,22 +1,23 @@
 <template>
   <section class="h-20">
     <header class="fixed center-flex backdrop-blur-md h-20 w-full shadow-md z-20">
-      <span class="font-bold mr-4">
-        {{ fps }}
-      </span>
-
-      <nav class="max-w-[60rem] w-full flex justify-between gap-12">
+      <nav class="max-w-[60rem] w-full flex justify-between gap-12 mx-6">
         <NuxtLink
-          class="italic font-extrabold flex items-center text-primary-600"
+          class="font-bold text-sm flex items-center text-primary-600"
           to="#"
         >
           <NuxtImg
+            v-if="!exampleStore.name"
             src="/images/logotipo.png"
             class="h-10"
           />
+
+          <span v-else>
+            {{ exampleStore.name }}
+          </span>
         </NuxtLink>
   
-        <div class="flex gap-12">
+        <div class="hidden lg:flex gap-12">
           <NuxtLink
             v-for="link in [
               {
@@ -30,7 +31,7 @@
                 to: '#skills'
               },
               {
-                name: 'Histórico',
+                name: 'Qualificações',
                 icon: 'mdi:clipboard-edit-outline',
                 to: '#about'
               },
@@ -41,23 +42,22 @@
               }
             ]"
             :key="link.name"
-            :to="{ hash: link.to }"
-            external
-            class="leading-none font-semibold center-flex gap-1 transition-all underline decoration-transparent hover:decoration-primary-500"
+            :to="link.to"
+            class="leading-none font-semibold center-flex gap-1 transition-all text-sm underline decoration-transparent hover:decoration-primary-500"
           >
             <Icon :name="link.icon" />
             {{ link.name }}
           </NuxtLink>
         </div>
         
-        <Button
-          class="center-flex text-xl cursor-pointer"
-          @click="changeColorMode"
+        <NoletoButton
+          class="center-flex text-2xl cursor-pointer"
+          @action="changeColorMode"
         >
           <Icon
             :name="colorMode.preference === 'light' ? 'line-md:sunny-outline' : 'line-md:moon-simple'"
           />
-        </Button>
+        </NoletoButton>
       </nav>
     </header>
   </section>
@@ -65,12 +65,14 @@
 
 <script lang="ts" setup>
 
-  const fps = useFps();
+  // const fps = useFps();
 
   const colorMode = useColorMode();
 
   function changeColorMode() {
     colorMode.preference = colorMode.preference === 'dark' ? 'light' : 'dark';
   }
+
+  const exampleStore = useExampleStore();
 
 </script>

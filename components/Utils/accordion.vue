@@ -9,7 +9,7 @@
 
     <transition name="accordion-transition">
       <section v-show="open">
-        <slot />
+        <slot :open="open" />
       </section>
     </transition>
   </nav>
@@ -19,7 +19,7 @@
 
   const open = defineModel('open', {
     type: Boolean,
-    default: false
+    default: true
   });
 
   function toggle() {

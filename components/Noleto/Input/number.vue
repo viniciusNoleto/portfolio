@@ -1,5 +1,10 @@
 <template>
-  <PrimeVueInputNumber />
+  <PrimeVueInputNumber
+    fluid
+    format
+    show-buttons
+    size="small"
+  />
 </template>
 
 <script lang="ts" setup>
