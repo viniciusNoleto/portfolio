@@ -1,0 +1,126 @@
+/* Estilos compartilhados pelos painéis da página (components/Trail/*). */
+
+.trail {
+  --bg: #0a0d14;
+  --glass: rgba(9, 12, 19, 0.5);
+  --glass-2: rgba(255, 255, 255, 0.07);
+  --glass-3: rgba(255, 255, 255, 0.13);
+  --line: rgba(255, 255, 255, 0.1);
+  --ink: #eef1f6;
+  --muted: #b4bccb;
+  --accent: #5a9bfc;
+  --accent-ink: #0a0d14;
+  --m: clamp(16px, 2.6vw, 40px);
+  --nav-h: 56px;
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(0.9375rem, 0.9rem + 0.18vw, 1.0625rem);
+  --step-lead: clamp(1.0625rem, 0.98rem + 0.4vw, 1.3125rem);
+  --step-head: clamp(1.75rem, 1.2rem + 1.7vw, 2.75rem);
+  --panel-w: min(500px, 35vw);
+  /* um só raio para tudo: cabeçalho, caixas, botões e blocos internos */
+  --radius: 8px;
+  --box-pad: 10px 12px;
+
+  position: relative;
+  min-height: 100svh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Erode', Georgia, 'Times New Roman', serif;
+  font-size: var(--step-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.trail main { position: relative; z-index: 1; }
+
+/* Cada seção é uma faixa do mundo; a caixa de texto flutua sobre o cenário. */
+.trail .spot {
+  position: relative;
+  min-height: calc(var(--u, 20px) * var(--span));
+  padding: calc(var(--u, 20px) * var(--off)) var(--m) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.trail .spot.side-right { align-items: flex-end; }
+/* a última faixa ganha meia tela a mais: no fim da rolagem o barco fica no centro */
+.trail .spot.side-both { min-height: calc(var(--u, 20px) * var(--span) + 50svh); }
+
+.trail .panel {
+  width: var(--panel-w);
+  min-width: 0;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(16px) saturate(1.35);
+  backdrop-filter: blur(16px) saturate(1.35);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(18px, 1.7vw, 24px);
+  scroll-margin-top: calc(var(--nav-h) + 16px);
+  text-align: left;
+}
+
+/* tipografia */
+.trail h1, .trail h2, .trail h3 {
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-wrap: balance;
+}
+.trail h2 { font-size: var(--step-head); }
+.trail h3 { font-size: var(--step-lead); line-height: 1.2; letter-spacing: -0.01em; }
+.trail .lead { font-size: var(--step-lead); line-height: 1.38; }
+.trail .small { font-size: var(--step-small); color: var(--muted); }
+.trail .muted { color: var(--muted); }
+.trail .kicker { font-size: var(--step-small); color: var(--muted); letter-spacing: 0.02em; margin-bottom: 8px; }
+/* separador entre informações na mesma linha (components/Trail/Sep.vue) */
+.trail .sep { display: inline-block; margin: 0 0.45em; color: var(--muted); }
+
+.trail a { text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+.trail a:hover { color: #9cc2ff; }
+.trail :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.trail .btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+  border-radius: var(--radius);
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+.trail .btn:hover { color: var(--accent-ink); background: #7db0fd; }
+.trail .btn:active { transform: translateY(1px) scale(0.98); }
+
+/* lista de caixinhas dentro de um painel (prêmios, etapas, cargos, palestras) */
+.trail .cards { margin-top: 16px; display: grid; gap: 4px; }
+.trail .card { padding: var(--box-pad); border-radius: var(--radius); background: var(--glass-2); display: grid; gap: 4px; }
+.trail .card h3 { font-size: var(--step-body); font-weight: 600; letter-spacing: 0; }
+.trail .card p { font-size: var(--step-small); }
+
+/* entrada (composables/useRise.ts) */
+.rise-on .trail .rise > * { opacity: 0; transform: translateY(18px); transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); }
+.rise-on .trail .rise.in > * { opacity: 1; transform: none; }
+.rise-on .trail .rise.in > :nth-child(2) { transition-delay: 80ms; }
+.rise-on .trail .rise.in > :nth-child(3) { transition-delay: 160ms; }
+.rise-on .trail .rise.in > :nth-child(4) { transition-delay: 240ms; }
+.rise-on .trail .rise.in > :nth-child(n+5) { transition-delay: 320ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-on .trail .rise > * { transform: none; transition: opacity 300ms linear; }
+}
+
+/* Sem WebGL: as caixas viram uma coluna simples. */
+.trail.no-world .spot { min-height: 0; padding: 6vh var(--m); align-items: center; }
+.trail.no-world .panel { width: min(720px, 100%); background: #131824; }
+
+@media (max-width: 899px) {
+  .trail { --nav-h: 0px; --panel-w: 100%; }
+  /* no celular as caixas ocupam a largura toda; o vão embaixo de cada uma deixa o cenário aparecer */
+  .trail .spot { padding-top: calc(var(--u, 10px) * var(--off) * 0.6); padding-bottom: 42svh; }
+  .trail .spot.side-both { padding-bottom: 0; }
+  .trail .spot.side-right { align-items: stretch; }
+  .trail .panel { background: rgba(9, 12, 19, 0.62); }
+}

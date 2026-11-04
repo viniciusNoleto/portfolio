@@ -1,60 +1,34 @@
 <template>
-  <section class="flex flex-col relative min-h-screen overflow-x-hidden">
-    <NuxtLoadingIndicator :color="PRIMARY_COLOR" />
+  <div class="trail" :class="{ 'no-world': failed }">
+    <ClientOnly>
+      <TrailWorld />
+    </ClientOnly>
 
-    <LayoutHeader />
+    <TrailNav />
 
-    <section class="flex flex-col gap-20">
-      <LayoutMe id="me" />
-
-      <div class="center-flex">
-        <div class="h-px w-[80%] bg-gradient-to-r from-transparent via-gray-500/35 to-transparent"/>
-      </div>
-  
-      <LayoutSkills id="skills" />
-
-      <div class="center-flex">
-        <div class="h-px w-[80%] bg-gradient-to-r from-transparent via-gray-500/35 to-transparent"/>
-      </div>
-
-      <LayoutQualifications id="qualifications" />
-    </section>
-
-    <StyleStainWrapper class="top-0 right-0">
-      <StyleStainCore class="h-[175vh] from-primary-500/20" />
-    </StyleStainWrapper>
-
-    <StyleStainWrapper class="top-0 right-0">
-      <StyleStainCore class="h-[100vh] from-blue-500/20" />
-    </StyleStainWrapper>
-
-    <!-- <Main /> -->
-
-    <div
-      class="h-[50vh]"
-    />
-
-  </section>
+    <main>
+      <TrailHero />
+      <TrailEducation />
+      <TrailWork />
+      <TrailProjects />
+      <TrailAwards />
+      <TrailLibrary />
+      <TrailStage />
+      <TrailSpot id="pier" />
+      <TrailContact />
+    </main>
+  </div>
 </template>
 
-<script setup>
-
-  import { PRIMARY_COLOR } from './common/constants/colors';
-
-  const img = useImage()
-
-  const profilePic = computed(() => {
-    return img('/images/me.jpg');
-  });
+<script setup lang="ts">
+  const { failed } = provideTrail();
+  useRise();
 
   useSeoMeta({
-    title: "Vinícius Nolêto's portfolio",
-    description: "Vinícius Nolêto de Araújo - Front-end Developer",
-    ogImage: profilePic
+    title: 'Vinícius Nolêto, engenheiro de software full stack',
+    description: 'Portfólio de Vinícius Nolêto, engenheiro de software full stack em Boa Vista, Roraima: formação, trabalho, projetos, prêmios, cursos e palestras.',
+    ogTitle: 'Vinícius Nolêto, engenheiro de software full stack',
+    ogDescription: 'Vue, Nuxt, React, Next, Angular e Laravel. Uma caminhada por um mundo em ASCII, de casa até o rio.',
+    themeColor: '#0a0d14',
   });
-
 </script>
-
-<style lang="css" scoped>
-
-</style>

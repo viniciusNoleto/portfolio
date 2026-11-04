@@ -1,0 +1,44 @@
+/* Reset mínimo: o que a página espera do navegador (antes vinha do preflight do Tailwind). */
+*, ::before, ::after { box-sizing: border-box; border: 0 solid; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+body { margin: 0; background: #0a0d14; }
+
+h1, h2, h3, h4, p, dl, dd, ol, ul, figure { margin: 0; }
+h1, h2, h3, h4 { font-size: inherit; font-weight: inherit; }
+ol, ul { list-style: none; padding: 0; }
+a { color: inherit; text-decoration: inherit; }
+button { font: inherit; color: inherit; background: transparent; padding: 0; cursor: pointer; }
+canvas, img, svg { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Tema do OverlayScrollbars (plugins/overlayscrollbars.client.ts): trilho invisível, só o polegar.
+   O anel escuro mantém o polegar visível tanto em fundo claro quanto escuro. */
+.os-theme-thumb {
+  --os-size: 16px;
+  --os-padding-perpendicular: 3px;
+  --os-padding-axis: 4px;
+  --os-track-bg: transparent;
+  --os-track-bg-hover: transparent;
+  --os-track-bg-active: transparent;
+  --os-track-border: none;
+  --os-handle-bg: rgba(238, 241, 246, 0.85);
+  --os-handle-bg-hover: rgba(238, 241, 246, 0.88);
+  --os-handle-bg-active: rgba(238, 241, 246, 0.95);
+  --os-handle-border: 1px solid rgba(10, 13, 20, 0.55);
+  --os-handle-border-radius: 8px;
+  --os-handle-min-size: 96px;
+  --os-handle-perpendicular-size: 100%;
+  --os-handle-perpendicular-size-hover: 100%;
+  --os-handle-perpendicular-size-active: 100%;
+  --os-handle-interactive-area-offset: 4px;
+}
+.os-theme-thumb .os-scrollbar-handle { box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35); }
