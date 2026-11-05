@@ -1,0 +1,45 @@
+{
+  "seo": {
+    "title": "Vinícius Nolêto, desarrollador full stack",
+    "description": "Portafolio de Vinícius Nolêto, desarrollador full stack en Boa Vista, Roraima: formación, trabajo, proyectos, premios, cursos y charlas.",
+    "ogDescription": "Desarrollador full stack en Boa Vista, Roraima, con especialidad en Vue y Nuxt. También React, Next, Angular y Laravel."
+  },
+  "lang": { "label": "Idioma" },
+  "nav": {
+    "label": "Secciones",
+    "formacao": "Formación",
+    "trabalho": "Trabajo",
+    "projetos": "Proyectos",
+    "premios": "Premios",
+    "cursos": "Cursos",
+    "palestras": "Charlas",
+    "contato": "Contacto"
+  },
+  "hero": {
+    "age": "{n} años",
+    "lead": "Programador full stack, con especialidad en Vue y Nuxt y experiencia de la base de datos a la interfaz.",
+    "today": "Hoy",
+    "todayText": "Programador full stack semi senior en Mercado Eletrônico, remoto",
+    "stack": "Stack",
+    "road": "Camino",
+    "roadText": "Programo desde hace {coding} años, desde {codingSince}, y trabajo en el área desde hace {working} años, desde {workingSince}"
+  },
+  "work": {
+    "firstJob": "Primer empleo",
+    "whatIDid": "Lo que hice",
+    "grewMost": "Donde más crecí",
+    "a3Title": "A&3, de becario a semi senior",
+    "today": "Hoy",
+    "whatIDo": "Lo que hago"
+  },
+  "awards": {
+    "intro": "En Roraima, tres primeros lugares seguidos.",
+    "heading": "{place} en {event}"
+  },
+  "library": {
+    "intro": "Arrastra el librero hacia los lados y haz clic en un libro para ver la portada.",
+    "learned": "Lo que aprendí",
+    "used": "Dónde lo usé"
+  },
+  "contact": { "find": "Dónde encontrarme" }
+}

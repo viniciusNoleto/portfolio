@@ -1,11 +1,11 @@
 <template>
   <TrailSpot id="premios">
     <div class="panel rise">
-      <h2>Prêmios</h2>
-      <p class="intro">Em Roraima, três primeiros lugares seguidos.</p>
+      <h2>{{ t('nav.premios') }}</h2>
+      <p class="intro">{{ t('awards.intro') }}</p>
       <ol class="cards">
-        <li v-for="a in chronological" :key="a.event" class="card">
-          <h3>{{ a.place }} no {{ a.event }}</h3>
+        <li v-for="(a, i) in chronological" :key="i" class="card">
+          <h3>{{ t('awards.heading', { place: a.place, event: a.event }) }}</h3>
           <p class="small">{{ a.project }}<TrailSep />{{ a.when }}<TrailSep />{{ a.by }}</p>
           <p>{{ a.text }}</p>
         </li>
@@ -15,15 +15,17 @@
 </template>
 
 <script setup lang="ts">
-  import { AWARDS } from '~/common/data/journey';
+  const { t } = useI18n();
+  const journey = useJourney();
 
-  // AWARDS vem do mais novo ao mais antigo; na página e no mundo a ordem é a dos acontecimentos.
-  const chronological = [...AWARDS].reverse();
+  // os prêmios vêm do mais novo ao mais antigo; na página e no mundo a ordem é a dos acontecimentos.
+  const chronological = computed(() => [...journey.value.awards].reverse());
 
-  // No mundo, os troféus sobem um de cada vez nos pedestais ao lado do pódio (índices de AWARDS).
-  const cur = useWorldPick('podium', AWARDS.length - 1);
+  // No mundo, os troféus sobem um de cada vez nos pedestais ao lado do pódio (índices de journey.awards).
+  const n = journey.value.awards.length;
+  const cur = useWorldPick('podium', n - 1);
   const { resume } = useIntervalFn(() => {
-    cur.value = (cur.value + AWARDS.length - 1) % AWARDS.length;
+    cur.value = (cur.value + n - 1) % n;
   }, 3600, { immediate: false });
 
   onMounted(() => {

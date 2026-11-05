@@ -1,24 +1,24 @@
 <template>
   <TrailSpot id="cursos">
     <div class="panel rise">
-      <h2>Cursos</h2>
-      <p class="intro">Arraste a estante para os lados e clique em um livro para ver a capa.</p>
+      <h2>{{ t('nav.cursos') }}</h2>
+      <p class="intro">{{ t('library.intro') }}</p>
 
-      <div ref="shelf" class="shelf" :class="{ dragging }" role="list" aria-label="Cursos">
-        <div v-for="(b, i) in BOOKS" :key="b.title" role="listitem" class="slot" :class="{ on: cur === i }">
+      <div ref="shelf" class="shelf" :class="{ dragging }" :aria-label="t('nav.cursos')" role="list">
+        <div v-for="(b, i) in BOOKS" :key="i" role="listitem" class="slot" :class="{ on: cur === i }">
           <button
-            class="book" :class="`t-${b.tone}`" :style="{ '--h': `${b.height}%` }"
+            class="book" :class="`t-${BOOK_STYLE[i].tone}`" :style="{ '--h': `${BOOK_STYLE[i].height}%` }"
             :aria-pressed="cur === i" :aria-label="`${b.title}, ${b.when}`" draggable="false"
             @click="cur = i"
           >
             <span class="spine" aria-hidden="true">
-              <span class="spine-mark">{{ b.mark }}</span>
+              <span class="spine-mark">{{ BOOK_STYLE[i].mark }}</span>
               <span class="spine-title">{{ b.short }}</span>
               <span class="spine-year">{{ b.when.slice(-4) }}</span>
             </span>
             <!-- escolhido: o livro gira e mostra a capa, fechado -->
             <span class="cover" aria-hidden="true">
-              <span class="cover-mark">{{ b.mark }}</span>
+              <span class="cover-mark">{{ BOOK_STYLE[i].mark }}</span>
               <span class="cover-title">{{ b.short }}</span>
               <span class="cover-year">{{ b.when }}</span>
             </span>
@@ -26,13 +26,13 @@
         </div>
       </div>
 
-      <article class="card info" :class="`t-${book.tone}`" aria-live="polite">
+      <article class="card info" :class="`t-${BOOK_STYLE[cur].tone}`" aria-live="polite">
         <h3>{{ book.title }}</h3>
         <p class="small">{{ book.by }}<TrailSep />{{ book.when }}</p>
         <dl>
-          <dt>O que aprendi</dt>
+          <dt>{{ t('library.learned') }}</dt>
           <dd>{{ book.learned }}</dd>
-          <dt>Onde usei</dt>
+          <dt>{{ t('library.used') }}</dt>
           <dd>{{ book.used }}</dd>
         </dl>
       </article>
@@ -41,10 +41,14 @@
 </template>
 
 <script setup lang="ts">
-  import { BOOKS } from '~/common/data/journey';
+  // símbolo, cor e altura de cada livro; os textos vêm do conteúdo no idioma atual
+  import { BOOK_STYLE } from '~/common/data/journey';
 
+  const { t } = useI18n();
+  const journey = useJourney();
+  const BOOKS = computed(() => journey.value.books);
   const cur = useWorldPick('library');
-  const book = computed(() => BOOKS[cur.value]);
+  const book = computed(() => BOOKS.value[cur.value]);
 
   // a estante rola arrastando; se arrastou, o clique de soltar não escolhe livro
   const shelf = ref<HTMLElement | null>(null);

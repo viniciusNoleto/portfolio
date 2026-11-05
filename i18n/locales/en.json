@@ -1,0 +1,45 @@
+{
+  "seo": {
+    "title": "Vinícius Nolêto, full stack developer",
+    "description": "Portfolio of Vinícius Nolêto, a full stack developer in Boa Vista, Roraima, Brazil: education, work, projects, awards, courses and talks.",
+    "ogDescription": "Full stack developer in Boa Vista, Roraima, Brazil, specializing in Vue and Nuxt. Also React, Next, Angular and Laravel."
+  },
+  "lang": { "label": "Language" },
+  "nav": {
+    "label": "Sections",
+    "formacao": "Education",
+    "trabalho": "Work",
+    "projetos": "Projects",
+    "premios": "Awards",
+    "cursos": "Courses",
+    "palestras": "Talks",
+    "contato": "Contact"
+  },
+  "hero": {
+    "age": "{n} years old",
+    "lead": "Full stack developer specializing in Vue and Nuxt, with experience from the database to the interface.",
+    "today": "Today",
+    "todayText": "Mid-level full stack developer at Mercado Eletrônico, remote",
+    "stack": "Stack",
+    "road": "Journey",
+    "roadText": "Coding for {coding} years, since {codingSince}, and working in the field for {working} years, since {workingSince}"
+  },
+  "work": {
+    "firstJob": "First job",
+    "whatIDid": "What I did",
+    "grewMost": "Where I grew the most",
+    "a3Title": "A&3, from intern to mid-level",
+    "today": "Today",
+    "whatIDo": "What I do"
+  },
+  "awards": {
+    "intro": "In Roraima, three first places in a row.",
+    "heading": "{place} at {event}"
+  },
+  "library": {
+    "intro": "Drag the bookshelf sideways and click a book to see its cover.",
+    "learned": "What I learned",
+    "used": "Where I used it"
+  },
+  "contact": { "find": "Where to find me" }
+}

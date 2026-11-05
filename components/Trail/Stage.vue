@@ -1,12 +1,12 @@
 <template>
   <TrailSpot id="palestras">
     <div class="panel rise">
-      <h2>Palestras</h2>
+      <h2>{{ t('nav.palestras') }}</h2>
       <div class="cards">
-        <article v-for="t in TALKS" :key="t.title" class="card">
-          <h3>{{ t.title }}</h3>
-          <p class="small">{{ t.where }}</p>
-          <p>{{ t.text }}</p>
+        <article v-for="(talk, i) in journey.talks" :key="i" class="card">
+          <h3>{{ talk.title }}</h3>
+          <p class="small">{{ talk.where }}</p>
+          <p>{{ talk.text }}</p>
         </article>
       </div>
     </div>
@@ -14,5 +14,6 @@
 </template>
 
 <script setup lang="ts">
-  import { TALKS } from '~/common/data/journey';
+  const { t } = useI18n();
+  const journey = useJourney();
 </script>

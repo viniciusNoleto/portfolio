@@ -1,15 +1,15 @@
 <template>
   <TrailSpot id="formacao">
     <div class="panel rise">
-      <h2>Formação</h2>
+      <h2>{{ t('nav.formacao') }}</h2>
       <ul class="cards">
         <li
-          v-for="(e, i) in EDUCATION" :key="e.course" class="card row" :class="{ on: cur === i }"
+          v-for="(e, i) in journey.education" :key="i" class="card row" :class="{ on: cur === i }"
           @mouseenter="hover(i)" @mouseleave="hovering = false"
         >
           <span class="dot" :style="{ background: CAMPUS_TONES[i] }" aria-hidden="true" />
           <h3 class="course">{{ e.course }}</h3>
-          <span class="status" :class="{ now: e.status.startsWith('Em') }">{{ e.status }}<template v-if="e.when"><TrailSep />{{ e.when }}</template></span>
+          <span class="status" :class="{ now: e.current }">{{ e.status }}<template v-if="e.when"><TrailSep />{{ e.when }}</template></span>
           <p class="school">{{ e.school }}</p>
           <p class="note">{{ e.note }}</p>
         </li>
@@ -19,11 +19,12 @@
 </template>
 
 <script setup lang="ts">
-  import { EDUCATION } from '~/common/data/journey';
   // as mesmas cores das paredes dos cômodos no prédio do campus
   import { CAMPUS_TONES } from '~/lib/world/layout.js';
 
   // No mundo, o cômodo de cada formação acende um de cada vez; passar o mouse numa caixa acende o dela.
+  const { t } = useI18n();
+  const journey = useJourney();
   const cur = useWorldPick('campus');
   const hovering = ref(false);
   function hover(i: number) {
@@ -32,7 +33,7 @@
   }
 
   const { resume } = useIntervalFn(() => {
-    if (!hovering.value) cur.value = (cur.value + 1) % EDUCATION.length;
+    if (!hovering.value) cur.value = (cur.value + 1) % journey.value.education.length;
   }, 4200, { immediate: false });
 
   onMounted(() => {

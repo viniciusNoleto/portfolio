@@ -3,7 +3,7 @@
     <!-- No fim da página o barco fica no meio da tela; a caixa fica logo abaixo dele, centralizada. -->
     <div class="center">
       <div class="panel rise find">
-        <h3>Onde me encontrar</h3>
+        <h3>{{ t('contact.find') }}</h3>
         <dl>
           <div><dt>LinkedIn</dt><dd><a :href="LINKS.linkedin" target="_blank" rel="noopener">Vinícius Nolêto de Araújo</a></dd></div>
           <div><dt>GitHub</dt><dd><a :href="LINKS.github" target="_blank" rel="noopener">viniciusNoleto</a></dd></div>
@@ -15,6 +15,8 @@
 
 <script setup lang="ts">
   import { LINKS } from '~/common/data/journey';
+
+  const { t } = useI18n();
 </script>
 
 <style scoped>

@@ -1,19 +1,17 @@
 <template>
   <TrailSpot id="inicio">
     <div class="panel rise hero">
-      <p class="kicker">{{ age }} anos<TrailSep />Boa Vista, Roraima</p>
+      <p class="kicker">{{ t('hero.age', { n: age }) }}<TrailSep />Boa Vista, Roraima</p>
       <h1>Vinícius Nolêto</h1>
-      <p class="lead">
-        Programador full stack, com especialidade em Vue e Nuxt e experiência do banco de dados à interface.
-      </p>
+      <p class="lead">{{ t('hero.lead') }}</p>
       <div class="actions">
         <a class="btn" :href="LINKS.linkedin" target="_blank" rel="noopener">LinkedIn</a>
         <a :href="LINKS.github" target="_blank" rel="noopener">GitHub</a>
       </div>
       <dl class="facts">
-        <div><dt>Hoje</dt><dd>Programador full stack pleno no Mercado Eletrônico, remoto</dd></div>
-        <div><dt>Stack</dt><dd>Vue, Nuxt, React, Next, Angular, TypeScript, Laravel, Docker</dd></div>
-        <div><dt>Estrada</dt><dd>Programo há {{ coding }} anos, desde {{ CAREER.codingSince }}, e trabalho na área há {{ working }} anos, desde {{ CAREER.workingSince }}</dd></div>
+        <div><dt>{{ t('hero.today') }}</dt><dd>{{ t('hero.todayText') }}</dd></div>
+        <div><dt>{{ t('hero.stack') }}</dt><dd>Vue, Nuxt, React, Next, Angular, TypeScript, Laravel, Docker</dd></div>
+        <div><dt>{{ t('hero.road') }}</dt><dd>{{ t('hero.roadText', { coding, codingSince: CAREER.codingSince, working, workingSince: CAREER.workingSince }) }}</dd></div>
       </dl>
     </div>
   </TrailSpot>
@@ -21,6 +19,8 @@
 
 <script setup lang="ts">
   import { CAREER, LINKS, ageOn, yearsSince } from '~/common/data/journey';
+
+  const { t } = useI18n();
 
   // idade e tempo de carreira são calculados; recalculados no navegador para não ficarem presos à data do build
   const age = ref(ageOn());

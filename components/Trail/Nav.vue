@@ -1,17 +1,20 @@
 <template>
   <header class="trail-nav">
     <a class="mark" href="#inicio">Vinícius Nolêto</a>
-    <nav aria-label="Seções">
+    <nav :aria-label="t('nav.label')">
       <a
-        v-for="item in NAV" :key="item.anchor" :href="`#${item.anchor}`"
-        :class="{ on: active === item.anchor }" :aria-current="active === item.anchor ? 'location' : undefined"
-      >{{ item.label }}</a>
+        v-for="anchor in NAV" :key="anchor" :href="`#${anchor}`"
+        :class="{ on: active === anchor }" :aria-current="active === anchor ? 'location' : undefined"
+      >{{ t(`nav.${anchor}`) }}</a>
     </nav>
+    <TrailLang />
   </header>
 </template>
 
 <script setup lang="ts">
   import { NAV, NAV_GROUPS } from '~/common/data/journey';
+
+  const { t } = useI18n();
 
   // A seção atual é a última cujo topo já passou do meio da tela.
   const active = ref('');

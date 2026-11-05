@@ -1,7 +1,7 @@
 <template>
-  <TrailSpot v-for="(p, i) in PROJECTS" :id="projectSectionId(i)" :key="p.name">
+  <TrailSpot v-for="(p, i) in PROJECTS" :id="projectSectionId(i)" :key="i">
     <article class="panel rise project" :style="{ '--theme': PROJECT_COLORS[i] }">
-      <p class="kicker">Projetos<TrailSep /><span class="num">{{ pad(i + 1) }}/{{ pad(PROJECTS.length) }}</span></p>
+      <p class="kicker">{{ t('nav.projetos') }}<TrailSep /><span class="num">{{ pad(i + 1) }}/{{ pad(PROJECTS.length) }}</span></p>
       <h2>{{ p.name }}</h2>
       <p class="small meta">{{ p.period }}<TrailSep />{{ p.kind }}</p>
       <p class="text">{{ p.text }}</p>
@@ -17,9 +17,12 @@
 </template>
 
 <script setup lang="ts">
-  import { PROJECTS } from '~/common/data/journey';
   // a borda de cada caixa tem a cor do galpão do projeto no mundo
   import { PROJECT_COLORS, projectSectionId } from '~/lib/world/layout.js';
+
+  const { t } = useI18n();
+  const journey = useJourney();
+  const PROJECTS = computed(() => journey.value.projects);
 
   const pad = (n: number) => String(n).padStart(2, '0');
 </script>
