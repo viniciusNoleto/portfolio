@@ -10,16 +10,12 @@
           <p>{{ a.text }}</p>
         </li>
       </ol>
-      <p class="extra">
-        Em 2024 voltei à Expoferr com o {{ AWARD_EXTRA.project }}. {{ AWARD_EXTRA.text }}
-        <a :href="AWARD_EXTRA.href" target="_blank" rel="noopener">Ver no GitHub</a>
-      </p>
     </div>
   </TrailSpot>
 </template>
 
 <script setup lang="ts">
-  import { AWARD_EXTRA, AWARDS } from '~/common/data/journey';
+  import { AWARDS } from '~/common/data/journey';
 
   // AWARDS vem do mais novo ao mais antigo; na página e no mundo a ordem é a dos acontecimentos.
   const chronological = [...AWARDS].reverse();
@@ -37,6 +33,4 @@
 
 <style scoped>
   .intro { margin-top: 12px; }
-  .extra { margin-top: 14px; color: var(--muted); font-size: var(--step-small); }
-  .extra a { color: var(--ink); }
 </style>

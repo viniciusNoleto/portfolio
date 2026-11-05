@@ -1,6 +1,6 @@
 # portfolio
 
-Portfólio de Vinícius Nolêto: uma página só, rolando por um mundo ASCII em Three.js, de casa até o rio.
+Portfólio de Vinícius Nolêto: uma página só, em Nuxt, com o cenário em Three.js renderizado em ASCII.
 
 ```bash
 npm install

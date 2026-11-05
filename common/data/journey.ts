@@ -1,4 +1,4 @@
-// Conteúdo do portfólio "a estrada até o rio".
+// Conteúdo do portfólio.
 // Fonte: perfil profissional (LinkedIn, lido em 03/11/2026) e os READMEs do GitHub.
 // Cada seção corresponde a um lugar do mundo ASCII (lib/world/world.js e lib/world/layout.js).
 
@@ -11,6 +11,10 @@ export function ageOn(d: Date = new Date()) {
   const before = m < BIRTH.month || (m === BIRTH.month && d.getDate() < BIRTH.day);
   return d.getFullYear() - BIRTH.year - (before ? 1 : 0);
 }
+
+// Carreira: só os anos (sem mês). O tempo é sempre calculado a partir deles, nunca fixo.
+export const CAREER = { codingSince: 2019, workingSince: 2022 };
+export const yearsSince = (year: number, d: Date = new Date()) => d.getFullYear() - year;
 
 export const LINKS = {
   linkedin: 'https://www.linkedin.com/in/vin%C3%ADcius-nol%C3%AAto-de-ara%C3%BAjo/',
@@ -42,28 +46,28 @@ export const EDUCATION = [
     school: 'UNIPDS',
     status: 'Em andamento',
     when: 'desde 2026',
-    note: 'A pós que acompanha o trabalho de hoje: servidores MCP e chat com IA dentro de aplicações corporativas.',
+    note: 'Como integrar IA a sistemas de verdade: modelos de linguagem, agentes, servidores MCP e as práticas de engenharia para levar isso à produção.',
   },
   {
     course: 'Engenharia de Software',
     school: 'Graduação',
     status: 'Em andamento',
     when: '',
-    note: 'Graduação feita em paralelo ao trabalho, com foco em arquitetura de software.',
+    note: 'Arquitetura de software, processos de desenvolvimento, qualidade, testes e gestão de projetos.',
   },
   {
     course: 'Pós em Gestão na Cibersegurança Empresarial',
     school: 'Estácio',
     status: 'Concluída',
     when: '2026',
-    note: 'Pós lato sensu. Segurança, LGPD e gestão de risco aplicadas às decisões de produto.',
+    note: 'Segurança da informação, LGPD e gestão de riscos, para decidir produto e código pensando na proteção dos dados.',
   },
   {
     course: 'Análise e Desenvolvimento de Sistemas',
     school: 'Estácio',
     status: 'Concluído',
     when: '',
-    note: 'Tecnólogo. Na formatura, um agradecimento à professora Thais Oliveira Almeida, da UFRR.',
+    note: 'A base da programação: lógica, algoritmos, estruturas de dados, banco de dados e desenvolvimento web.',
   },
 ];
 
@@ -72,8 +76,9 @@ export const ITERAIMA = {
   role: 'Desenvolvedor Full Stack',
   period: 'ago/2022 – nov/2023',
   mode: 'Meio período, presencial em Boa Vista',
-  intro:
-    'O instituto de terras de Roraima, que outorga títulos de terra do governo do estado. Construí o REGULARIZA, o sistema que conduz todo o processo de outorga.',
+  // sobre o lugar e, separado, o resumo do que eu fiz
+  about: 'Instituto de Terras e Colonização de Roraima, o órgão do governo do estado que regulariza e outorga os títulos de terra.',
+  summary: 'Construí do zero o REGULARIZA, o sistema que conduz todo o processo de outorga: das planilhas soltas ao banco de dados e ao pagamento.',
   steps: [
     {
       name: 'Planilhas',
@@ -86,10 +91,6 @@ export const ITERAIMA = {
     {
       name: 'Sistema',
       text: 'O REGULARIZA, em PHP e JavaScript, acompanha cada processo de outorga do pedido até o título.',
-    },
-    {
-      name: 'Documentos',
-      text: 'Documentos oficiais e relatórios passaram a ser emitidos automaticamente, gerados com Python.',
     },
     {
       name: 'Pagamento',
@@ -129,12 +130,25 @@ export const ME = {
   role: 'Programador Full Stack Pleno',
   period: 'jul/2025 – hoje',
   mode: 'Tempo integral, remoto',
-  intro: 'Compras e vendas entre empresas de grande porte, com clientes no Brasil, em Portugal, nos Estados Unidos e no México.',
-  points: [
-    'Especialidade em Vue e Nuxt, com atuação full stack.',
-    'Abstração, modularização e reutilização de código para soluções que crescem sem ficar difíceis de manter.',
-    'Servidores MCP (Model Context Protocol) e funcionalidades de chat com IA integradas a aplicações corporativas.',
-    'Tech Talk interna sobre a arquitetura de comunicação do front-end com a API.',
+  about: 'Plataforma de compras e vendas entre empresas de grande porte, com clientes no Brasil, em Portugal, nos Estados Unidos e no México.',
+  summary: 'Desenvolvo como full stack, com especialidade em Vue e Nuxt, cuidando da arquitetura do front-end e das funcionalidades com IA.',
+  steps: [
+    {
+      name: 'Vue e Nuxt',
+      text: 'A especialidade no front-end, com atuação full stack quando a entrega pede.',
+    },
+    {
+      name: 'Arquitetura',
+      text: 'Abstração, modularização e reutilização de código para soluções que crescem sem ficar difíceis de manter.',
+    },
+    {
+      name: 'IA',
+      text: 'Servidores MCP (Model Context Protocol) e funcionalidades de chat com IA integradas a aplicações corporativas.',
+    },
+    {
+      name: 'Tech Talk',
+      text: 'Apresentação interna sobre a arquitetura de comunicação do front-end com a API.',
+    },
   ],
 };
 
@@ -145,7 +159,6 @@ export type Project = {
   stack: string;
   text: string;
   detail: string[];
-  image?: string;
   links?: { label: string; href: string }[];
 };
 
@@ -162,7 +175,6 @@ export const PROJECTS: Project[] = [
       'Tokens opacos com rotação de refresh token; um token reaproveitado revoga a família inteira.',
       'Vitest e Playwright no front, Pest contra um PostgreSQL real na API.',
     ],
-    image: '/world/projects/stock.png',
     links: [
       { label: 'Front no GitHub', href: 'https://github.com/viniciusNoleto/white-label-stock-web' },
       { label: 'API no GitHub', href: 'https://github.com/viniciusNoleto/white-label-stock-api' },
@@ -194,7 +206,6 @@ export const PROJECTS: Project[] = [
       'Tabuleiro em divisões com arrastar e soltar, personagens salvos como molde e gerador de nomes.',
       'Testes com Vitest e Playwright.',
     ],
-    image: '/world/projects/storyweaver.png',
     links: [{ label: 'GitHub', href: 'https://github.com/viniciusNoleto/storyweaver' }],
   },
   {
@@ -209,7 +220,6 @@ export const PROJECTS: Project[] = [
       'Filtros combináveis guardados na URL e exportação para Excel do resultado filtrado.',
       'White label: nome, cores, logo e textos trocáveis, em pt-BR, es-MX e en-US.',
     ],
-    image: '/world/projects/utility-list.png',
     links: [{ label: 'GitHub', href: 'https://github.com/viniciusNoleto/white-label-utility-list' }],
   },
   {
@@ -266,13 +276,6 @@ export const AWARDS = [
     text: 'Equipe In Water: protótipo de app para avaliar a qualidade da água, denunciar problemas e conscientizar sobre a extinção de animais aquáticos.',
   },
 ];
-
-export const AWARD_EXTRA = {
-  event: 'Agrotech Expoferr 2024',
-  project: 'Bio Spot',
-  text: 'Com a equipe Agro Sentinelas, liderei um time multidisciplinar e fiz os sites, os fluxos e a apresentação de uma plataforma para mapear surtos de pragas.',
-  href: 'https://github.com/viniciusNoleto/expoferr-bio-spot-public',
-};
 
 export type Book = {
   title: string;

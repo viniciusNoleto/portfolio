@@ -4,7 +4,7 @@
       <p class="kicker">{{ age }} anos<TrailSep />Boa Vista, Roraima</p>
       <h1>Vinícius Nolêto</h1>
       <p class="lead">
-        Engenheiro de software full stack, com especialidade em Vue e Nuxt e experiência do banco de dados à interface.
+        Programador full stack, com especialidade em Vue e Nuxt e experiência do banco de dados à interface.
       </p>
       <div class="actions">
         <a class="btn" :href="LINKS.linkedin" target="_blank" rel="noopener">LinkedIn</a>
@@ -13,18 +13,24 @@
       <dl class="facts">
         <div><dt>Hoje</dt><dd>Programador full stack pleno no Mercado Eletrônico, remoto</dd></div>
         <div><dt>Stack</dt><dd>Vue, Nuxt, React, Next, Angular, TypeScript, Laravel, Docker</dd></div>
-        <div><dt>Estrada</dt><dd>Cerca de 4 anos de desenvolvimento, desde agosto de 2022</dd></div>
+        <div><dt>Estrada</dt><dd>Programo há {{ coding }} anos, desde {{ CAREER.codingSince }}, e trabalho na área há {{ working }} anos, desde {{ CAREER.workingSince }}</dd></div>
       </dl>
     </div>
   </TrailSpot>
 </template>
 
 <script setup lang="ts">
-  import { LINKS, ageOn } from '~/common/data/journey';
+  import { CAREER, LINKS, ageOn, yearsSince } from '~/common/data/journey';
 
-  // calculada a partir da data de nascimento; recalculada no navegador para não ficar presa à data do build
+  // idade e tempo de carreira são calculados; recalculados no navegador para não ficarem presos à data do build
   const age = ref(ageOn());
-  onMounted(() => { age.value = ageOn(); });
+  const coding = ref(yearsSince(CAREER.codingSince));
+  const working = ref(yearsSince(CAREER.workingSince));
+  onMounted(() => {
+    age.value = ageOn();
+    coding.value = yearsSince(CAREER.codingSince);
+    working.value = yearsSince(CAREER.workingSince);
+  });
 </script>
 
 <style scoped>
