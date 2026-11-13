@@ -22,7 +22,7 @@
   --box-pad: 10px 12px;
 
   position: relative;
-  min-height: 100svh;
+  min-height: 100dvh;
   background: var(--bg);
   color: var(--ink);
   font-family: 'Erode', Georgia, 'Times New Roman', serif;
@@ -44,7 +44,7 @@
 }
 .trail .spot.side-right { align-items: flex-end; }
 /* a última faixa ganha meia tela a mais: no fim da rolagem o barco fica no centro */
-.trail .spot.side-both { min-height: calc(var(--u, 20px) * var(--span) + 50svh); }
+.trail .spot.side-both { min-height: calc(var(--u, 20px) * var(--span) + 50dvh); }
 
 .trail .panel {
   width: var(--panel-w);
@@ -113,13 +113,13 @@
 }
 
 /* Sem WebGL: as caixas viram uma coluna simples. */
-.trail.no-world .spot { min-height: 0; padding: 6vh var(--m); align-items: center; }
+.trail.no-world .spot { min-height: 0; padding: 6dvh var(--m); align-items: center; }
 .trail.no-world .panel { width: min(720px, 100%); background: #131824; }
 
 @media (max-width: 899px) {
   .trail { --nav-h: 0px; --panel-w: 100%; }
   /* no celular as caixas ocupam a largura toda; o vão embaixo de cada uma deixa o cenário aparecer */
-  .trail .spot { padding-top: calc(var(--u, 10px) * var(--off) * 0.6); padding-bottom: 42svh; }
+  .trail .spot { padding-top: calc(var(--u, 10px) * var(--off) * 0.6); padding-bottom: 42dvh; }
   .trail .spot.side-both { padding-bottom: 0; }
   .trail .spot.side-right { align-items: stretch; }
   .trail .panel { background: rgba(9, 12, 19, 0.62); }

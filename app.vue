@@ -6,7 +6,7 @@
 
     <TrailNav />
     <!-- no celular o cabeçalho some; a troca de idioma fica no topo da página -->
-    <div class="lang-mobile"><TrailLang /></div>
+    <div class="lang-mobile"><TrailRender v-if="!failed" /><TrailLang /></div>
 
     <main>
       <TrailHero />
@@ -48,6 +48,8 @@
       z-index: 2;
       display: flex;
       justify-content: flex-end;
+      align-items: center;
+      gap: 14px;
       padding: 12px var(--m) 0;
     }
     .lang-mobile .lang {

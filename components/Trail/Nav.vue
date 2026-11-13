@@ -1,6 +1,9 @@
 <template>
   <header class="trail-nav">
-    <a class="mark" href="#inicio">Vinícius Nolêto</a>
+    <div class="brand">
+      <TrailRender v-if="!failed" />
+      <a class="mark" href="#inicio">Vinícius Nolêto</a>
+    </div>
     <nav :aria-label="t('nav.label')">
       <a
         v-for="anchor in NAV" :key="anchor" :href="`#${anchor}`"
@@ -15,6 +18,7 @@
   import { NAV, NAV_GROUPS } from '~/common/data/journey';
 
   const { t } = useI18n();
+  const { failed } = useTrail();
 
   // A seção atual é a última cujo topo já passou do meio da tela.
   const active = ref('');
@@ -62,7 +66,8 @@
     border-radius: var(--radius);
     font-size: var(--step-small);
   }
-  .mark { font-size: var(--step-body); font-weight: 600; text-decoration: none; margin-right: auto; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
+  .mark { font-size: var(--step-body); font-weight: 600; text-decoration: none; }
   nav { display: flex; gap: 4px; }
   nav a {
     padding: 6px 10px;

@@ -4,6 +4,7 @@
     "description": "Portafolio de Vinícius Nolêto, desarrollador full stack en Boa Vista, Roraima: formación, trabajo, proyectos, premios, cursos y charlas.",
     "ogDescription": "Desarrollador full stack en Boa Vista, Roraima, con especialidad en Vue y Nuxt. También React, Next, Angular y Laravel."
   },
+  "render": { "label": "Motor gráfico", "ascii": "ASCII activado", "plain": "3D original" },
   "lang": { "label": "Idioma" },
   "nav": {
     "label": "Secciones",
