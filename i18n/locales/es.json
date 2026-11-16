@@ -5,6 +5,7 @@
     "ogDescription": "Desarrollador full stack en Boa Vista, Roraima, con especialidad en Vue y Nuxt. También React, Next, Angular y Laravel."
   },
   "render": { "label": "Motor gráfico", "ascii": "ASCII activado", "plain": "3D original" },
+  "loading": "Cargando el mundo",
   "lang": { "label": "Idioma" },
   "nav": {
     "label": "Secciones",

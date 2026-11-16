@@ -1,10 +1,11 @@
 <template>
-  <div class="trail" :class="{ 'no-world': failed }">
+  <div class="trail" :class="{ 'no-world': failed, loading: !ready }">
     <ClientOnly>
       <TrailWorld />
     </ClientOnly>
 
     <TrailNav />
+    <TrailLoader />
     <!-- no celular o cabeçalho some; a troca de idioma fica no topo da página -->
     <div class="lang-mobile"><TrailRender v-if="!failed" /><TrailLang /></div>
 
@@ -23,8 +24,8 @@
 </template>
 
 <script setup lang="ts">
-  const { failed } = provideTrail();
-  useRise();
+  const { failed, ready } = provideTrail();
+  useRise(ready);
 
   const { t, locale, locales } = useI18n();
   const language = computed(() => locales.value.find(l => l.code === locale.value)?.language ?? 'pt-BR');
@@ -38,6 +39,8 @@
     ogLocale: () => language.value.replace('-', '_'),
     themeColor: '#0a0d14',
   });
+  // sem JavaScript o mundo nunca carrega: as caixas aparecem direto e o indicador some
+  useHead({ noscript: [{ innerHTML: '<style>.trail.loading main{opacity:1!important;visibility:visible!important}.trail .loader{display:none}</style>' }] });
 </script>
 
 <style>

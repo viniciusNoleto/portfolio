@@ -87,6 +87,7 @@
       measure();
       api.start();
       ready.value = true;
+      trail.ready.value = true;
       trail.attach(api);
       // depuração: o mundo fica acessível no console e nas capturas automáticas
       (window as any).__trailWorld = api;

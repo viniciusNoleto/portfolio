@@ -31,7 +31,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.trail main { position: relative; z-index: 1; }
+.trail main { position: relative; z-index: 1; transition: opacity 900ms ease; }
+/* enquanto o mundo carrega só o cabeçalho fica na tela (components/Trail/Loader.vue);
+   visibility tira as caixas do foco e dos cliques, mas mantém o layout que o mundo mede */
+.trail.loading main { opacity: 0; visibility: hidden; transition: none; }
 
 /* Cada seção é uma faixa do mundo; a caixa de texto flutua sobre o cenário. */
 .trail .spot {
