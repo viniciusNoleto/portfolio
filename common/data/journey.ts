@@ -29,6 +29,9 @@ export const REPOS = {
   gateway: 'https://github.com/viniciusNoleto/mocked-payment-gateway',
   storyweaver: 'https://github.com/viniciusNoleto/storyweaver',
   utilityList: 'https://github.com/viniciusNoleto/white-label-utility-list',
+  crossPoker: 'https://github.com/viniciusNoleto/cross-poker',
+  gomoney: 'https://github.com/viniciusNoleto/erp-go-example',
+  grimoire: 'https://github.com/viniciusNoleto/code-grimoire',
 };
 
 // Âncoras do cabeçalho; o rótulo de cada uma está em i18n/locales/*.json (nav.<âncora>).
