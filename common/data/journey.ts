@@ -48,10 +48,14 @@ export const NAV_GROUPS: Record<string, string> = {
 
 // Aparência de cada livro da estante, na mesma ordem de `books` no conteúdo.
 export const BOOK_STYLE: { mark: string; tone: 'a' | 'b' | 'c' | 'd' | 'e'; height: number }[] = [
+  { mark: '⚛', tone: 'c', height: 90 }, // React
+  { mark: 'DB', tone: 'e', height: 82 }, // SQL
+  { mark: 'L', tone: 'd', height: 86 }, // Laravel
   { mark: '</>', tone: 'a', height: 92 }, // Angular
   { mark: '△', tone: 'b', height: 84 }, // Nuxt 3
   { mark: 'V', tone: 'c', height: 96 }, // Vue 3
   { mark: 'V²', tone: 'd', height: 88 }, // Vue avançado
+  { mark: '▣', tone: 'a', height: 76 }, // Docker
   { mark: '§', tone: 'e', height: 70 }, // LGPD
   { mark: '★', tone: 'b', height: 74 }, // Hackatur
   { mark: '~', tone: 'c', height: 80 }, // Tailwind
